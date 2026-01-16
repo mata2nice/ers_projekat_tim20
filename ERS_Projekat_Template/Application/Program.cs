@@ -6,6 +6,7 @@ using Domain.Servisi;
 using Presentation.Authentifikacija;
 using Presentation.Meni;
 using Services.AutenftikacioniServisi;
+using Services.BiljkeServisi;
 
 namespace Loger_Bloger
 {
@@ -20,7 +21,28 @@ namespace Loger_Bloger
             IKorisniciRepozitorijum korisniciRepozitorijum = new KorisniciRepozitorijum(bazaPodataka);
 
             // Servisi
-            IAutentifikacijaServis autentifikacijaServis = new AutentifikacioniServis(); // TODO: Pass necessary dependencies
+            IAutentifikacijaServis autentifikacijaServis = new AutentifikacioniServis();
+
+
+            //  BILJKE 
+
+            // Repozitorijum za biljke
+            IBiljkeRepozitorijum biljkeRepo =
+                new BiljkeRepozitorijum(bazaPodataka);
+
+            // Servis za biljke
+            IBiljkeServis biljkeServis =
+                new BiljkeServis(biljkeRepo);
+
+            // Meni za biljke
+            BiljkeMeni biljkeMeni =
+                new BiljkeMeni(biljkeServis);
+
+
+            
+
+
+            // TODO: Pass necessary dependencies
             // TODO: Add other necessary services
 
             // Ako nema nijednog korisnika u sistemu, dodati dva nova

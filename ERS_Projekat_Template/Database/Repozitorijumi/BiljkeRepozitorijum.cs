@@ -19,6 +19,8 @@ namespace Database.Repozitorijumi
             _baza = baza;
         }
 
+
+        //123
         public Biljka DodajBiljku(Biljka biljka)
         {
             biljka.Id = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
